@@ -23,8 +23,14 @@ else
 	DOTLIB:=.a
 endif
 
-DFLAGS=$(MODEL_FLAG) -conf= -O -release -dip25 -inline -w -Isrc -Iimport $(PIC)
-UDFLAGS=$(MODEL_FLAG) -conf= -O -release -dip25 -w -Isrc -Iimport $(PIC)
+ifeq ($(BUILD),debug)
+	DFLAGS=$(MODEL_FLAG) -conf= -O -g -gc -debug -dip25 -inline -w -Isrc -Iimport $(PIC)
+	UDFLAGS=$(MODEL_FLAG) -conf= -O -g -gc -debug -dip25 -w -Isrc -Iimport $(PIC)
+else
+	DFLAGS=$(MODEL_FLAG) -conf= -O -release -dip25 -inline -w -Isrc -Iimport $(PIC)
+	UDFLAGS=$(MODEL_FLAG) -conf= -O -release -dip25 -w -Isrc -Iimport $(PIC)
+endif
+
 DDOCFLAGS=-conf= -c -w -o- -Isrc -Iimport -version=CoreDdoc
 
 CFLAGS=$(MODEL_FLAG) -O $(PIC)
@@ -64,7 +70,7 @@ SRCS:=$(subst \,/,$(SRCS))
 OBJS= $(OBJDIR)/errno_c.o $(OBJDIR)/bss_section.o $(OBJDIR)/threadasm.o
 
 # build with shared library support
-SHARED=$(if $(findstring $(OS),linux freebsd),1,)
+SHARED=$(if $(findstring $(OS),linux freebsd dragonflybsd),1,)
 
 LINKDL=$(if $(findstring $(OS),linux),-L-ldl,)
 
