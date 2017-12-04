@@ -45,6 +45,9 @@ SRCS=\
 	src\core\sys\freebsd\execinfo.d \
 	src\core\sys\freebsd\sys\event.d \
 	\
+	src\core\sys\dragonflybsd\execinfo.d \
+	src\core\sys\dragonflybsd\sys\event.d \
+	\
 	src\core\sys\linux\stdio.d \
 	src\core\sys\linux\tipc.d \
 	\
