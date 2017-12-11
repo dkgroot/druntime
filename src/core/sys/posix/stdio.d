@@ -200,9 +200,11 @@ FILE*  popen(in char*, in char*);
 // memstream functions are conforming to POSIX.1-2008.  These functions are
 // not specified in POSIX.1-2001 and are not widely available on other
 // systems.
-version( CRuntime_Glibc )                     // as of glibc 1.0x
+version( CRuntime_Glibc )                    // as of glibc 1.0x
     version = HaveMemstream;
 else version( FreeBSD )                      // as of FreeBSD 9.2
+    version = HaveMemstream;
+else version( DragonFlyBSD )                 // for DragonFlyBSD
     version = HaveMemstream;
 else version( OpenBSD )                      // as of OpenBSD 5.4
     version = HaveMemstream;
@@ -269,6 +271,10 @@ version( OSX )
     enum P_tmpdir  = "/var/tmp";
 }
 version( FreeBSD )
+{
+    enum P_tmpdir  = "/var/tmp/";
+}
+version( DragonFlyBSD )
 {
     enum P_tmpdir  = "/var/tmp/";
 }

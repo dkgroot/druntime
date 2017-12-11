@@ -53,6 +53,22 @@ else version(FreeBSD)
 
     int uname(utsname* __name);
 }
+else version(DragonFlyBSD)
+{
+    private enum utsNameLength = 32;
+
+    struct utsname
+    {
+        char[utsNameLength] sysname;
+        char[utsNameLength] nodename;
+        char[utsNameLength] release;
+        // The field name is version but version is a keyword in D.
+        char[utsNameLength] update;
+        char[utsNameLength] machine;
+    }
+
+    int uname(utsname* __name);
+}
 else version(CRuntime_Bionic)
 {
     private enum SYS_NMLN = 65;

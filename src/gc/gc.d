@@ -353,7 +353,10 @@ struct GC
             long tm = (GC.config.profile > 1 ? currTime.ticks : 0);
         }
 
-        bool locked = (gcLock.lock(), true);
+        bool locked = () {
+            gcLock.lock();
+            return true;
+        }();
 
         debug(PROFILE_API)
         {
@@ -378,7 +381,10 @@ struct GC
             }();
         }
         else
-            bool unlocked = (gcLock.unlock(), true);
+            bool unlocked = () {
+                gcLock.unlock();
+                return true;
+            }();
     }
 
     /**
