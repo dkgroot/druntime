@@ -641,6 +641,7 @@ else version( DragonFlyBSD )
     enum EPROTONOSUPPORT    = 43;       /// Protocol not supported
     enum ENOTSUP            = 45;       /// Operation not supported
     enum EOPNOTSUPP         = ENOTSUP;  /// Operation not supported on socket
+    enum EPFNOSUPPORT       = 46;       /// Protocol family not supported
     enum EAFNOSUPPORT       = 47;       /// Address family not supported by protocol family
     enum EADDRINUSE         = 48;       /// Address already in use
     enum EADDRNOTAVAIL      = 49;       /// Can't assign requested address
@@ -686,7 +687,14 @@ else version( DragonFlyBSD )
     enum EMULTIHOP          = 90;       /// Multihop attempted
     enum ENOLINK            = 91;       /// Link has been severed
     enum EPROTO             = 92;       /// Protocol error
-    enum ELAST              = 92;       /// Must be equal largest errno
+    enum ENOMEDIUM          = 93;
+    enum EUNUSED94          = 94;
+    enum EUNUSED95          = 95;
+    enum EUNUSED96          = 96;
+    enum EUNUSED97          = 97;
+    enum EUNUSED98          = 98;
+    enum EASYNC             = 99;
+    enum ELAST              = 99;       /// Must be equal largest errno
 }
 else version (Solaris)
 {

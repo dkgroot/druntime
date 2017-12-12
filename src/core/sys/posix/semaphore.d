@@ -83,7 +83,6 @@ else version( FreeBSD )
 }
 else version( DragonFlyBSD )
 {
-    // FBSD-9.0 definition
     struct sem_t
     {
         uint _magic;

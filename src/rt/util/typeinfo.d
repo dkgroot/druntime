@@ -246,11 +246,8 @@ unittest
             assert(f1 == 0 + 0i);
 
             assert(f1 == f2);
-            version (DragonFlyBSD) {
-                //core.exception.AssertError@src/rt/util/typeinfo.d(249): unittest failure
-            } else {
-                assert(f1 !is f2);
-            }
+            version (DragonFlyBSD) {} else   // FIXME:  //core.exception.AssertError@src/rt/util/typeinfo.d(249): unittest failure
+            assert(f1 !is f2);
             ti = typeid(F);
             assert(ti.getHash(&f1) == ti.getHash(&f2));
 

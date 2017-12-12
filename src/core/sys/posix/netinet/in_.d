@@ -238,9 +238,9 @@ else version( DragonFlyBSD )
     enum : uint
     {
         INADDR_ANY       = 0x00000000,
-        INADDR_BROADCAST = 0xffffffff,
         INADDR_LOOPBACK  = 0x7f000001,
-        INADDR_NONE      = 0xffffffff
+        INADDR_BROADCAST = 0xffffffff,
+        INADDR_NONE      = 0xffffffff,
     }
 
     //enum INET_ADDRSTRLEN       = 16;

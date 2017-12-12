@@ -96,10 +96,10 @@ else version( DragonFlyBSD )
         time_t  pw_change;      /* password change time */
         char*   pw_class;       /* user access class */
         char*   pw_gecos;       /* Honeywell login info */
-        char*   pw_dir;     /* home directory */
+        char*   pw_dir;         /* home directory */
         char*   pw_shell;       /* default shell */
         time_t  pw_expire;      /* account expiration */
-        int pw_fields;      /* internal: fields filled in */
+        int     pw_fields;      /* internal: fields filled in */
     }
 }
 else version (Solaris)

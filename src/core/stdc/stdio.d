@@ -1166,7 +1166,6 @@ else version( DragonFlyBSD )
     pure int  ferror(FILE*);
     int  fileno(FILE*);
   }
-
   enum __SLBF = 0x0001;
   enum __SNBF = 0x0002;
   enum __SRD  = 0x0004;

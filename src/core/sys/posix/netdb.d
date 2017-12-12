@@ -389,6 +389,10 @@ else version( FreeBSD )
 }
 else version( DragonFlyBSD )
 {
+    /*
+     * Error return codes from gethostbyname() and gethostbyaddr()
+     * (left in h_errno).
+     */
     struct hostent
     {
         char*   h_name;
@@ -422,20 +426,13 @@ else version( DragonFlyBSD )
         char*   s_proto;
     }
 
-    enum IPPORT_RESERVED = 1024;
-
-    //h_errno
-
-    enum HOST_NOT_FOUND = 1;
-    enum NO_DATA        = 4;
-    enum NO_RECOVERY    = 3;
-    enum TRY_AGAIN      = 2;
-
     struct addrinfo
     {
         int         ai_flags;
         int         ai_family;
-        int         ai_socktype;
+        int         ai_socktype = SOCK_STREAM;			/* socktype default value required to be able to perform getAddrInfo on DragonFlyBSD
+                                                                 * without socktype set, you get 'servname not supported for ai_socktype'
+                                                                 */
         int         ai_protocol;
         socklen_t   ai_addrlen;
         char*       ai_canonname;
@@ -443,33 +440,53 @@ else version( DragonFlyBSD )
         addrinfo*   ai_next;
     }
 
-    enum AI_PASSIVE         = 0x1;
-    enum AI_CANONNAME       = 0x2;
-    enum AI_NUMERICHOST     = 0x4;
-    enum AI_NUMERICSERV     = 0x8;
-    enum AI_V4MAPPED        = 0x800;
-    enum AI_ALL             = 0x100;
-    enum AI_ADDRCONFIG      = 0x400;
+    enum IPPORT_RESERVED = 1024;
 
-    enum NI_NOFQDN          = 0x1;
-    enum NI_NUMERICHOST     = 0x2;
-    enum NI_NAMEREQD        = 0x4;
-    enum NI_NUMERICSERV     = 0x8;
-    //enum NI_NUMERICSCOPE    = ?;
-    enum NI_DGRAM           = 0x10;
-    enum NI_MAXHOST         = 1025; // non-standard
-    enum NI_MAXSERV         = 32;   // non-standard
+    enum NETDB_INTERNAL = -1;
+    enum NETDB_SUCCESS  = 0;
+    enum HOST_NOT_FOUND = 1;
+    enum TRY_AGAIN      = 2;
+    enum NO_RECOVERY    = 3;
+    enum NO_DATA        = 4;
+    enum NO_ADDRESS     = NO_DATA;
 
+    //enum EAI_ADDRFAMILY     = 1; // deprecated
     enum EAI_AGAIN          = 2;
     enum EAI_BADFLAGS       = 3;
     enum EAI_FAIL           = 4;
     enum EAI_FAMILY         = 5;
     enum EAI_MEMORY         = 6;
+    //enum EAI_NODATA         = 7; // deprecated
     enum EAI_NONAME         = 8;
     enum EAI_SERVICE        = 9;
     enum EAI_SOCKTYPE       = 10;
     enum EAI_SYSTEM         = 11;
+    enum EAI_BADHINTS       = 12;
+    enum EAI_PROTOCOL       = 13;
     enum EAI_OVERFLOW       = 14;
+
+    enum AI_PASSIVE         = 0x001;
+    enum AI_CANONNAME       = 0x002;
+    enum AI_NUMERICHOST     = 0x004;
+    enum AI_NUMERICSERV     = 0x008;
+    enum AI_MASK            = (AI_PASSIVE | AI_CANONNAME | AI_NUMERICHOST | AI_NUMERICSERV | AI_ADDRCONFIG);   // valid flags for addrinfo (not a standard def, apps should not use it)
+    enum AI_ALL             = 0x100;
+    enum AI_V4MAPPED_CFG    = 0x200;
+    enum AI_ADDRCONFIG      = 0x400;
+    enum AI_V4MAPPED        = 0x800;
+    enum AI_DEFAULT         = (AI_V4MAPPED_CFG | AI_ADDRCONFIG);
+
+    enum NI_MAXHOST         = 1025; // non-standard
+    enum NI_MAXSERV         = 32;   // non-standard
+
+    enum NI_NOFQDN          = 0x01;
+    enum NI_NUMERICHOST     = 0x02;
+    enum NI_NAMEREQD        = 0x04;
+    enum NI_NUMERICSERV     = 0x08;
+    enum NI_DGRAM           = 0x10;
+    //enum NI_WITHSCOPEID     = 0x20; // deprecated
+    enum NI_NUMERICSCOPE    = 0x40;
+
 }
 else version (Solaris)
 {

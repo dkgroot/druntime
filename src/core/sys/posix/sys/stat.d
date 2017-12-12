@@ -719,11 +719,6 @@ else version( FreeBSD )
 }
 else version( DragonFlyBSD )
 {
-    struct __timespec_t {
-            time_t  tv_sec;                 /* seconds */
-            c_long    tv_nsec;              /* and nanoseconds */
-    };
-
     struct stat_t {
             ino_t     st_ino;               /* inode's number */
             nlink_t   st_nlink;             /* number of hard links */

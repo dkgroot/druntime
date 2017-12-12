@@ -699,6 +699,7 @@ else version( DragonFlyBSD )
         uint[8]	        mc_unused;
         int[256]	mc_fpregs;
       };  // __attribute__((aligned(64)));
+    }
     else
     {
         static assert(0, "Only X86_64 support on DragonFlyBSD");
@@ -714,7 +715,7 @@ else version( DragonFlyBSD )
 
         ucontext_t*     uc_link;
         stack_t         uc_stack;
-        void 		function(struct __ucontext *, void *);			        //void            (*uc_cofunc)(struct __ucontext *, void *);
+        void 		function(ucontext_t *, void *) uc_cofunc;
         void*           uc_arg;
         int[4]          __spare__;
     }
