@@ -2,19 +2,16 @@
  * D header file for DragonFlyBSD.
  *
  * Copyright: Copyright Martin Nowak 2012.
- * License:   $(LINK2 http://www.boost.org/LICENSE_1_0.txt, Boost License 1.0)
- * Authors:   Martin Nowak, Diederik de Groot(port:DragonFlyBSD)
- */
-
-/*          Copyright Martin Nowak 2012.
- * Distributed under the Boost Software License, Version 1.0.
- *    (See accompanying file LICENSE or copy at
- *          http://www.boost.org/LICENSE_1_0.txt)
+ * License:   $(WEB www.boost.org/LICENSE_1_0.txt, Boost License 1.0).
+ * Authors:   Martin Nowak,Diederik de Groot(port:DragonFlyBSD)
+ * Copied:    From core/sys/freebsd/sys
  */
 module core.sys.dragonflybsd.sys.event;
 
 version (DragonFlyBSD):
 extern (C):
+nothrow:
+@nogc:
 
 import core.stdc.stdint;    // intptr_t, uintptr_t
 import core.sys.posix.time; // timespec
@@ -28,11 +25,11 @@ enum
     EVFILT_PROC     =  -5, /* attached to struct proc */
     EVFILT_SIGNAL   =  -6, /* attached to struct proc */
     EVFILT_TIMER    =  -7, /* timers */
-    // EVFILT_NETDEV   =  -8, /* no longer supported */
-    EVFILT_FS       =  -9, /* filesystem events */
-    EVFILT_LIO      = -10, /* attached to lio requests */
-    EVFILT_USER     = -11, /* User events */
-    EVFILT_SYSCOUNT =  11,
+    EVFILT_EXCEPT   =  -8, /* exceptional conditions */
+    EVFILT_USER     =  -9, /* user events */
+    EVFILT_FS       = -10, /* filesystem events */
+    EVFILT_MARKER   = 0xF, /* placemarker for tailq */
+    EVFILT_SYSCOUNT =  10,
 }
 
 extern(D) void EV_SET(kevent_t* kevp, typeof(kevent_t.tupleof) args)
@@ -53,23 +50,24 @@ struct kevent_t
 enum
 {
     /* actions */
-    EV_ADD      = 0x0001, /* add event to kq (implies enable) */
-    EV_DELETE   = 0x0002, /* delete event from kq */
-    EV_ENABLE   = 0x0004, /* enable event */
-    EV_DISABLE  = 0x0008, /* disable event (not reported) */
-
+    EV_ADD          = 0x0001, /* add event to kq (implies enable) */
+    EV_DELETE       = 0x0002, /* delete event from kq */
+    EV_ENABLE       = 0x0004, /* enable event */
+    EV_DISABLE      = 0x0008, /* disable event (not reported) */
+    
     /* flags */
-    EV_ONESHOT  = 0x0010, /* only report one occurrence */
-    EV_CLEAR    = 0x0020, /* clear event state after reporting */
-    EV_RECEIPT  = 0x0040, /* force EV_ERROR on success, data=0 */
-    EV_DISPATCH = 0x0080, /* disable event after reporting */
+    EV_ONESHOT      = 0x0010, /* only report one occurrence */
+    EV_CLEAR        = 0x0020, /* clear event state after reporting */
+    EV_RECEIPT      = 0x0040, /* force EV_ERROR on success, data=0 */
+    EV_DISPATCH     = 0x0080, /* disable event after reporting */
 
-    EV_SYSFLAGS = 0xF000, /* reserved by system */
-    EV_FLAG1    = 0x2000, /* filter-specific flag */
+    EV_SYSFLAGS     = 0xF000, /* reserved by system */
+    EV_FLAG1        = 0x2000, /* filter-specific flag */
 
     /* returned values */
-    EV_EOF      = 0x8000, /* EOF detected */
-    EV_ERROR    = 0x4000, /* error, data contains errno */
+    EV_EOF          = 0x8000, /* EOF detected */
+    EV_ERROR        = 0x4000, /* error, data contains errno */
+    EV_NODATA       = 0x1000, /* EOF and no more data */
 }
 
 enum
@@ -97,6 +95,7 @@ enum
      * data/hint flags for EVFILT_{READ|WRITE}, shared with userspace
      */
     NOTE_LOWAT      = 0x0001, /* low water mark */
+    NOTE_OOB        = 0x0002, /* OOB data on a socket */
 
     /*
      * data/hint flags for EVFILT_VNODE, shared with userspace
@@ -108,16 +107,13 @@ enum
     NOTE_LINK       = 0x0010, /* link count changed */
     NOTE_RENAME     = 0x0020, /* vnode was renamed */
     NOTE_REVOKE     = 0x0040, /* vnode access was revoked */
-
-    /*
-     * data/hint flags for EVFILT_PROC, shared with userspace
-     */
+    
     NOTE_EXIT       = 0x80000000, /* process exited */
     NOTE_FORK       = 0x40000000, /* process forked */
     NOTE_EXEC       = 0x20000000, /* process exec'd */
     NOTE_PCTRLMASK  = 0xf0000000, /* mask for hint bits */
     NOTE_PDATAMASK  = 0x000fffff, /* mask for pid */
-
+    
     /* additional flags for EVFILT_PROC */
     NOTE_TRACK      = 0x00000001, /* follow across forks */
     NOTE_TRACKERR   = 0x00000002, /* could not track child */
@@ -126,5 +122,4 @@ enum
 
 int kqueue();
 int kevent(int kq, const kevent_t *changelist, int nchanges,
-           kevent_t *eventlist, int nevents,
-           const timespec *timeout);
+           int nevents, const timespec *timeout);

@@ -3,8 +3,8 @@
  *
  * Copyright: Copyright Martin Nowak 2012.
  * License:   $(LINK2 http://www.boost.org/LICENSE_1_0.txt, Boost License 1.0)
- * Authors:   Martin Nowak, Diederik de Groot(port:DragonFlyBSD)
- * Copied:    From core/sys/freebsd
+ * Authors: Martin Nowak,Diederik de Groot(port:DragonFlyBSD)
+ * Copied:  From core/sys/freebsd/sys
  */
 module core.sys.dragonflybsd.execinfo;
 

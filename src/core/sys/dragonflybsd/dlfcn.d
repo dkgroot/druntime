@@ -1,10 +1,10 @@
 /**
- * D header file for DragonFlyBSD.
+ * D header file for DragonFlyBSD
  *
  * Copyright: Copyright Martin Nowak 2012.
  * License:   $(WEB www.boost.org/LICENSE_1_0.txt, Boost License 1.0).
- * Authors:   Martin Nowak, Diederik de Groot(port:DragonFlyBSD)
- * Copied:    From core/sys/freebsd
+ * Authors: Martin Nowak,Diederik de Groot(port:DragonFlyBSD)
+ * Copied:  From core/sys/freebsd/sys
  */
 module core.sys.dragonflybsd.dlfcn;
 
@@ -13,6 +13,7 @@ public import core.sys.posix.dlfcn;
 version (DragonFlyBSD):
 extern (C):
 nothrow:
+@nogc:
 
 enum __BSD_VISIBLE = true;
 
@@ -56,20 +57,6 @@ static if (__BSD_VISIBLE)
         void            *dli_saddr;     /* Address of nearest symbol. */
     };
 
-    /*-
-     * The actual type declared by this typedef is immaterial, provided that
-     * it is a function pointer.  Its purpose is to provide a return type for
-     * dlfunc() which can be cast to a function pointer type without depending
-     * on behavior undefined by the C standard, which might trigger a compiler
-     * diagnostic.  We intentionally declare a unique type signature to force
-     * a diagnostic should the application not cast the return value of dlfunc()
-     * appropriately.
-     */
-    struct __dlfunc_arg {
-        int     __dlfunc_dummy;
-    };
-
-    alias void function(__dlfunc_arg) dlfunc_t;
 
     /*
      * Structures, returned by the RTLD_DI_SERINFO dlinfo() request.
@@ -84,11 +71,26 @@ static if (__BSD_VISIBLE)
         uint            dls_cnt;        /* number of path entries */
         Dl_serpath[1]   dls_serpath;    /* there may be more than one */
     };
+
+    /*-
+     * The actual type declared by this typedef is immaterial, provided that
+     * it is a function pointer.  Its purpose is to provide a return type for
+     * dlfunc() which can be cast to a function pointer type without depending
+     * on behavior undefined by the C standard, which might trigger a compiler
+     * diagnostic.  We intentionally declare a unique type signature to force
+     * a diagnostic should the application not cast the return value of dlfunc()
+     * appropriately.
+     */
+    struct __dlfunc_arg {
+        int     __dlfunc_dummy;
+    };
+
+    alias dlfunc_t = void function(__dlfunc_arg);
 }
 
 private template __externC(RT, P...)
 {
-    alias extern(C) RT function(P) nothrow @nogc __externC;
+    alias __externC = extern(C) RT function(P) nothrow @nogc;
 }
 
 /* XSI functions first. */
@@ -103,12 +105,12 @@ static if (__BSD_VISIBLE)
     int      dladdr(const(void)*, Dl_info*);
     dlfunc_t dlfunc(void*, const(char)*);
     int      dlinfo(void*, int, void*);
-    void     dllockinit(void* _context,
+    /*void     dllockinit(void* _context,
         void* function(void* _context) _lock_create,
         void  function(void* _lock)    _rlock_acquire,
         void  function(void* _lock)    _wlock_acquire,
         void  function(void* _lock)    _lock_release,
         void  function(void* _lock)    _lock_destroy,
-        void  function(void* _context) _context_destroy);
+        void  function(void* _context) _context_destroy);*/
     void*    dlvsym(void*, const(char)*, const(char)*);
 }
