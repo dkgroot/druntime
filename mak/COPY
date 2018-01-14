@@ -49,91 +49,9 @@ COPY=\
 	$(IMPDIR)\core\stdc\wctype.d \
 	\
 	$(IMPDIR)\core\stdcpp\typeinfo.d \
-	$(IMPDIR)\core\stdcpp\exception.d \
-	\
-	$(IMPDIR)\core\sys\darwin\execinfo.d \
-	$(IMPDIR)\core\sys\darwin\pthread.d \
-	\
-	$(IMPDIR)\core\sys\darwin\mach\dyld.d \
-	$(IMPDIR)\core\sys\darwin\mach\getsect.d \
-	$(IMPDIR)\core\sys\darwin\mach\kern_return.d \
-	$(IMPDIR)\core\sys\darwin\mach\loader.d \
-	$(IMPDIR)\core\sys\darwin\mach\port.d \
-	$(IMPDIR)\core\sys\darwin\mach\semaphore.d \
-	$(IMPDIR)\core\sys\darwin\mach\thread_act.d \
-	\
-	$(IMPDIR)\core\sys\darwin\netinet\in_.d \
-	\
-	$(IMPDIR)\core\sys\darwin\sys\cdefs.d \
-	$(IMPDIR)\core\sys\darwin\sys\event.d \
-	$(IMPDIR)\core\sys\darwin\sys\mman.d \
-	\
-	$(IMPDIR)\core\sys\freebsd\dlfcn.d \
-	$(IMPDIR)\core\sys\freebsd\execinfo.d \
-	\
-	$(IMPDIR)\core\sys\freebsd\netinet\in_.d \
-	\
-	$(IMPDIR)\core\sys\freebsd\sys\cdefs.d \
-	$(IMPDIR)\core\sys\freebsd\pthread_np.d \
-	$(IMPDIR)\core\sys\freebsd\sys\_bitset.d \
-	$(IMPDIR)\core\sys\freebsd\sys\_cpuset.d \
-	$(IMPDIR)\core\sys\freebsd\sys\elf.d \
-	$(IMPDIR)\core\sys\freebsd\sys\elf32.d \
-	$(IMPDIR)\core\sys\freebsd\sys\elf64.d \
-	$(IMPDIR)\core\sys\freebsd\sys\elf_common.d \
-	$(IMPDIR)\core\sys\freebsd\sys\event.d \
-	$(IMPDIR)\core\sys\freebsd\sys\link_elf.d \
-	$(IMPDIR)\core\sys\freebsd\sys\mman.d \
-	$(IMPDIR)\core\sys\freebsd\time.d \
-	\
-	$(IMPDIR)\core\sys\linux\config.d \
-	$(IMPDIR)\core\sys\linux\dlfcn.d \
-	$(IMPDIR)\core\sys\linux\elf.d \
-	$(IMPDIR)\core\sys\linux\epoll.d \
-	$(IMPDIR)\core\sys\linux\errno.d \
-	$(IMPDIR)\core\sys\linux\execinfo.d \
-	$(IMPDIR)\core\sys\linux\fcntl.d \
-	$(IMPDIR)\core\sys\linux\ifaddrs.d \
-	$(IMPDIR)\core\sys\linux\link.d \
-	$(IMPDIR)\core\sys\linux\sched.d \
-	$(IMPDIR)\core\sys\linux\termios.d \
-	$(IMPDIR)\core\sys\linux\time.d \
-	$(IMPDIR)\core\sys\linux\timerfd.d \
-	$(IMPDIR)\core\sys\linux\tipc.d \
-	$(IMPDIR)\core\sys\linux\unistd.d \
-	\
-	$(IMPDIR)\core\sys\linux\netinet\in_.d \
-	$(IMPDIR)\core\sys\linux\netinet\tcp.d \
-	$(IMPDIR)\core\sys\linux\sys\netinet\tcp.d \
-	\
-	$(IMPDIR)\core\sys\linux\sys\auxv.d \
-	$(IMPDIR)\core\sys\linux\sys\eventfd.d \
-	$(IMPDIR)\core\sys\linux\sys\file.d \
-	$(IMPDIR)\core\sys\linux\sys\inotify.d \
-	$(IMPDIR)\core\sys\linux\sys\mman.d \
-	$(IMPDIR)\core\sys\linux\sys\signalfd.d \
-	$(IMPDIR)\core\sys\linux\sys\socket.d \
-	$(IMPDIR)\core\sys\linux\sys\sysinfo.d \
-	$(IMPDIR)\core\sys\linux\sys\xattr.d \
-	$(IMPDIR)\core\sys\linux\sys\time.d \
-	$(IMPDIR)\core\sys\linux\sys\prctl.d \
-	\
-	$(IMPDIR)\core\sys\openbsd\dlfcn.d \
-	\
-	$(IMPDIR)\core\sys\osx\execinfo.d \
-	$(IMPDIR)\core\sys\osx\pthread.d \
-	\
-	$(IMPDIR)\core\sys\osx\mach\dyld.d \
-	$(IMPDIR)\core\sys\osx\mach\getsect.d \
-	$(IMPDIR)\core\sys\osx\mach\kern_return.d \
-	$(IMPDIR)\core\sys\osx\mach\loader.d \
-	$(IMPDIR)\core\sys\osx\mach\port.d \
-	$(IMPDIR)\core\sys\osx\mach\semaphore.d \
-	$(IMPDIR)\core\sys\osx\mach\thread_act.d \
-	\
-	$(IMPDIR)\core\sys\osx\sys\cdefs.d \
-	$(IMPDIR)\core\sys\osx\sys\mman.d \
-	\
+	$(IMPDIR)\core\stdcpp\exception.d
+
+POSIX_COPY=\
 	$(IMPDIR)\core\sys\posix\arpa\inet.d \
 	$(IMPDIR)\core\sys\posix\config.d \
 	$(IMPDIR)\core\sys\posix\dirent.d \
@@ -182,8 +100,118 @@ COPY=\
 	$(IMPDIR)\core\sys\posix\sys\uio.d \
 	$(IMPDIR)\core\sys\posix\sys\un.d \
 	$(IMPDIR)\core\sys\posix\sys\wait.d \
-	$(IMPDIR)\core\sys\posix\sys\utsname.d \
+	$(IMPDIR)\core\sys\posix\sys\utsname.d
+
+DARWIN_COPY=\
+	$(IMPDIR)\core\sys\darwin\execinfo.d \
+	$(IMPDIR)\core\sys\darwin\pthread.d \
 	\
+	$(IMPDIR)\core\sys\darwin\mach\dyld.d \
+	$(IMPDIR)\core\sys\darwin\mach\getsect.d \
+	$(IMPDIR)\core\sys\darwin\mach\kern_return.d \
+	$(IMPDIR)\core\sys\darwin\mach\loader.d \
+	$(IMPDIR)\core\sys\darwin\mach\port.d \
+	$(IMPDIR)\core\sys\darwin\mach\semaphore.d \
+	$(IMPDIR)\core\sys\darwin\mach\thread_act.d \
+	\
+	$(IMPDIR)\core\sys\darwin\netinet\in_.d \
+	\
+	$(IMPDIR)\core\sys\darwin\sys\cdefs.d \
+	$(IMPDIR)\core\sys\darwin\sys\event.d \
+	$(IMPDIR)\core\sys\darwin\sys\mman.d
+
+LINUX_COPY=\
+	$(IMPDIR)\core\sys\linux\config.d \
+	$(IMPDIR)\core\sys\linux\dlfcn.d \
+	$(IMPDIR)\core\sys\linux\elf.d \
+	$(IMPDIR)\core\sys\linux\epoll.d \
+	$(IMPDIR)\core\sys\linux\errno.d \
+	$(IMPDIR)\core\sys\linux\execinfo.d \
+	$(IMPDIR)\core\sys\linux\fcntl.d \
+	$(IMPDIR)\core\sys\linux\ifaddrs.d \
+	$(IMPDIR)\core\sys\linux\link.d \
+	$(IMPDIR)\core\sys\linux\sched.d \
+	$(IMPDIR)\core\sys\linux\termios.d \
+	$(IMPDIR)\core\sys\linux\time.d \
+	$(IMPDIR)\core\sys\linux\timerfd.d \
+	$(IMPDIR)\core\sys\linux\tipc.d \
+	$(IMPDIR)\core\sys\linux\unistd.d \
+	\
+	$(IMPDIR)\core\sys\linux\netinet\in_.d \
+	$(IMPDIR)\core\sys\linux\netinet\tcp.d \
+	$(IMPDIR)\core\sys\linux\sys\netinet\tcp.d \
+	\
+	$(IMPDIR)\core\sys\linux\sys\auxv.d \
+	$(IMPDIR)\core\sys\linux\sys\eventfd.d \
+	$(IMPDIR)\core\sys\linux\sys\file.d \
+	$(IMPDIR)\core\sys\linux\sys\inotify.d \
+	$(IMPDIR)\core\sys\linux\sys\mman.d \
+	$(IMPDIR)\core\sys\linux\sys\signalfd.d \
+	$(IMPDIR)\core\sys\linux\sys\socket.d \
+	$(IMPDIR)\core\sys\linux\sys\sysinfo.d \
+	$(IMPDIR)\core\sys\linux\sys\xattr.d \
+	$(IMPDIR)\core\sys\linux\sys\time.d \
+	$(IMPDIR)\core\sys\linux\sys\prctl.d \
+	\
+	$(IMPDIR)\etc\linux\memoryerror.d
+
+FREEBSD_COPY=\
+	$(IMPDIR)\core\sys\freebsd\dlfcn.d \
+	$(IMPDIR)\core\sys\freebsd\execinfo.d \
+	\
+	$(IMPDIR)\core\sys\freebsd\netinet\in_.d \
+	\
+	$(IMPDIR)\core\sys\freebsd\sys\cdefs.d \
+	$(IMPDIR)\core\sys\freebsd\pthread_np.d \
+	$(IMPDIR)\core\sys\freebsd\sys\_bitset.d \
+	$(IMPDIR)\core\sys\freebsd\sys\_cpuset.d \
+	$(IMPDIR)\core\sys\freebsd\sys\elf.d \
+	$(IMPDIR)\core\sys\freebsd\sys\elf32.d \
+	$(IMPDIR)\core\sys\freebsd\sys\elf64.d \
+	$(IMPDIR)\core\sys\freebsd\sys\elf_common.d \
+	$(IMPDIR)\core\sys\freebsd\sys\event.d \
+	$(IMPDIR)\core\sys\freebsd\sys\link_elf.d \
+	$(IMPDIR)\core\sys\freebsd\sys\mman.d \
+	$(IMPDIR)\core\sys\freebsd\time.d
+
+DRAGONFLYBSD_COPY=\
+	$(IMPDIR)\core\sys\dragonflybsd\dlfcn.d \
+	$(IMPDIR)\core\sys\dragonflybsd\execinfo.d \
+	\
+	$(IMPDIR)\core\sys\dragonflybsd\netinet\in_.d \
+	\
+	$(IMPDIR)\core\sys\dragonflybsd\sys\cdefs.d \
+	$(IMPDIR)\core\sys\dragonflybsd\pthread_np.d \
+	$(IMPDIR)\core\sys\dragonflybsd\sys\_bitset.d \
+	$(IMPDIR)\core\sys\dragonflybsd\sys\_cpuset.d \
+	$(IMPDIR)\core\sys\dragonflybsd\sys\elf.d \
+	$(IMPDIR)\core\sys\dragonflybsd\sys\elf32.d \
+	$(IMPDIR)\core\sys\dragonflybsd\sys\elf64.d \
+	$(IMPDIR)\core\sys\dragonflybsd\sys\elf_common.d \
+	$(IMPDIR)\core\sys\dragonflybsd\sys\event.d \
+	$(IMPDIR)\core\sys\dragonflybsd\sys\link_elf.d \
+	$(IMPDIR)\core\sys\dragonflybsd\sys\mman.d \
+	$(IMPDIR)\core\sys\dragonflybsd\time.d
+
+OPENBSD_COPY=\
+	$(IMPDIR)\core\sys\openbsd\dlfcn.d
+
+OSX_COPY=\
+	$(IMPDIR)\core\sys\osx\execinfo.d \
+	$(IMPDIR)\core\sys\osx\pthread.d \
+	\
+	$(IMPDIR)\core\sys\osx\mach\dyld.d \
+	$(IMPDIR)\core\sys\osx\mach\getsect.d \
+	$(IMPDIR)\core\sys\osx\mach\kern_return.d \
+	$(IMPDIR)\core\sys\osx\mach\loader.d \
+	$(IMPDIR)\core\sys\osx\mach\port.d \
+	$(IMPDIR)\core\sys\osx\mach\semaphore.d \
+	$(IMPDIR)\core\sys\osx\mach\thread_act.d \
+	\
+	$(IMPDIR)\core\sys\osx\sys\cdefs.d \
+	$(IMPDIR)\core\sys\osx\sys\mman.d \
+
+SOLARIS_COPY=\
 	$(IMPDIR)\core\sys\solaris\dlfcn.d \
 	$(IMPDIR)\core\sys\solaris\elf.d \
 	$(IMPDIR)\core\sys\solaris\execinfo.d \
@@ -199,8 +227,9 @@ COPY=\
 	$(IMPDIR)\core\sys\solaris\sys\link.d \
 	$(IMPDIR)\core\sys\solaris\sys\procset.d \
 	$(IMPDIR)\core\sys\solaris\sys\types.d \
-	$(IMPDIR)\core\sys\solaris\sys\priocntl.d \
-	\
+	$(IMPDIR)\core\sys\solaris\sys\priocntl.d
+
+WINDOWS_COPY=\
 	$(IMPDIR)\core\sys\windows\accctrl.d \
 	$(IMPDIR)\core\sys\windows\aclapi.d \
 	$(IMPDIR)\core\sys\windows\aclui.d \
@@ -365,6 +394,49 @@ COPY=\
 	$(IMPDIR)\core\sys\windows\winuser.d \
 	$(IMPDIR)\core\sys\windows\winver.d \
 	$(IMPDIR)\core\sys\windows\wtsapi32.d \
-	$(IMPDIR)\core\sys\windows\wtypes.d \
-	\
-	$(IMPDIR)\etc\linux\memoryerror.d
+	$(IMPDIR)\core\sys\windows\wtypes.d
+
+ifeq (1, $(ENABLE_LEAN_DRUNTIME))
+    ifeq (linux,$(OS))
+      COPY+=$(subst \,/,$(LINUX_COPY))
+      COPY+=$(subst \,/,$(POSIX_COPY))
+    endif
+    ifeq (freebsd,$(OS))
+      COPY+=$(subst \,/,$(FREEBSD_COPY))
+      COPY+=$(subst \,/,$(POSIX_COPY))
+    endif
+    ifeq (openbsd,$(OS))
+      COPY+=$(subst \,/,$(OPENBSD_COPY))
+      COPY+=$(subst \,/,$(POSIX_COPY))
+    endif
+    ifeq (netbsd,$(OS))
+      COPY+=$(subst \,/,$(POSIX_COPY))
+    endif
+    ifeq (dragonflybsd,$(OS))
+      COPY+=$(subst \,/,$(DRAGONFLYBSD_COPY))
+      COPY+=$(subst \,/,$(POSIX_COPY))
+    endif
+    ifeq (osx,$(OS))
+      COPY+=$(subst \,/,$(DARWIN_COPY))
+      COPY+=$(subst \,/,$(OSX_COPY))
+      COPY+=$(subst \,/,$(POSIX_COPY))
+    endif
+    ifeq (solaris,$(OS))
+      COPY+=$(subst \,/,$(SOLARIS_COPY))
+      COPY+=$(subst \,/,$(POSIX_COPY))
+    endif
+    ifeq (windows,$(OS))
+      COPY+=$(subst \,/,$(WINDOWS_COPY))
+      COPY+=$(subst \,/,$(POSIX_COPY))
+    endif
+else
+    COPY+=$(subst \,/,$(LINUX_COPY))
+    COPY+=$(subst \,/,$(FREEBSD_COPY))
+    COPY+=$(subst \,/,$(OPENBSD_COPY))
+    #COPY+=$(subst \,/,$(DRAGONFLYBSD_COPY))
+    COPY+=$(subst \,/,$(SOLARIS_COPY))
+    COPY+=$(subst \,/,$(DARWIN_COPY))
+    COPY+=$(subst \,/,$(OSX_COPY))
+    COPY+=$(subst \,/,$(WINDOWS_COPY))
+    COPY+=$(subst \,/,$(POSIX_COPY))
+endif

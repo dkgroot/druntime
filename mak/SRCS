@@ -54,35 +54,109 @@ SRCS=\
 	src\core\sync\rwmutex.d \
 	src\core\sync\semaphore.d \
 	\
-	src\core\sys\darwin\netinet\in_.d \
+	src\gc\bits.d \
+	src\gc\config.d \
+	src\gc\gcinterface.d \
+	src\gc\os.d \
+	src\gc\pooltable.d \
+	src\gc\proxy.d \
+	src\gc\impl\conservative\gc.d \
+	src\gc\impl\manual\gc.d \
 	\
-	src\core\sys\freebsd\dlfcn.d \
-	src\core\sys\freebsd\execinfo.d \
-	src\core\sys\freebsd\netinet\in_.d \
-	src\core\sys\freebsd\sys\_bitset.d \
-	src\core\sys\freebsd\sys\_cpuset.d \
-	src\core\sys\freebsd\sys\cdefs.d \
-	src\core\sys\freebsd\sys\elf_common.d \
-	src\core\sys\freebsd\sys\elf.d \
-	src\core\sys\freebsd\sys\elf32.d \
-	src\core\sys\freebsd\sys\elf64.d \
-	src\core\sys\freebsd\sys\event.d \
-	src\core\sys\freebsd\sys\link_elf.d \
-	src\core\sys\freebsd\sys\mman.d \
-	src\core\sys\freebsd\time.d \
+	src\rt\aApply.d \
+	src\rt\aApplyR.d \
+	src\rt\aaA.d \
+	src\rt\adi.d \
+	src\rt\alloca.d \
+	src\rt\arrayassign.d \
+	src\rt\arraycast.d \
+	src\rt\arraycat.d \
+	src\rt\cast_.d \
+	src\rt\cmath2.d \
+	src\rt\config.d \
+	src\rt\cover.d \
+	src\rt\critical_.d \
+	src\rt\deh.d \
+	src\rt\deh_win32.d \
+	src\rt\deh_win64_posix.d \
+	src\rt\dmain2.d \
+	src\rt\dwarfeh.d \
+	src\rt\ehalloc.d \
+	src\rt\invariant.d \
+	src\rt\lifetime.d \
+	src\rt\llmath.d \
+	src\rt\memory.d \
+	src\rt\memset.d \
+	src\rt\minfo.d \
+	src\rt\monitor_.d \
+	src\rt\obj.d \
+	src\rt\profilegc.d \
+	src\rt\qsort.d \
+	src\rt\sections.d \
+	src\rt\sections_android.d \
+	src\rt\sections_elf_shared.d \
+	src\rt\sections_osx_x86.d \
+	src\rt\sections_osx_x86_64.d \
+	src\rt\sections_solaris.d \
+	src\rt\sections_win32.d \
+	src\rt\sections_win64.d \
+	src\rt\tlsgc.d \
+	src\rt\trace.d \
+	src\rt\tracegc.d \
+	src\rt\unwind.d \
 	\
-	src\core\sys\linux\netinet\in_.d \
-	src\core\sys\linux\netinet\tcp.d \
-	src\core\sys\linux\stdio.d \
-	src\core\sys\linux\tipc.d \
-	src\core\sys\linux\sys\inotify.d \
-	src\core\sys\linux\sys\mman.d \
-	src\core\sys\linux\sys\signalfd.d \
-	src\core\sys\linux\sys\socket.d \
-	src\core\sys\linux\sys\sysinfo.d \
-	src\core\sys\linux\sys\time.d \
-	src\core\sys\linux\sys\xattr.d \
+	src\rt\backtrace\dwarf.d \
+	src\rt\backtrace\elf.d \
 	\
+	src\rt\util\array.d \
+	src\rt\util\hash.d \
+	src\rt\util\random.d \
+	src\rt\util\typeinfo.d \
+	src\rt\util\utf.d \
+	src\rt\util\container\array.d \
+	src\rt\util\container\common.d \
+	src\rt\util\container\hashtab.d \
+	src\rt\util\container\treap.d \
+	\
+	src\rt\typeinfo\ti_Acdouble.d \
+	src\rt\typeinfo\ti_Acfloat.d \
+	src\rt\typeinfo\ti_Acreal.d \
+	src\rt\typeinfo\ti_Adouble.d \
+	src\rt\typeinfo\ti_Afloat.d \
+	src\rt\typeinfo\ti_Ag.d \
+	src\rt\typeinfo\ti_Aint.d \
+	src\rt\typeinfo\ti_Along.d \
+	src\rt\typeinfo\ti_Areal.d \
+	src\rt\typeinfo\ti_Ashort.d \
+	src\rt\typeinfo\ti_byte.d \
+	src\rt\typeinfo\ti_C.d \
+	src\rt\typeinfo\ti_cdouble.d \
+	src\rt\typeinfo\ti_cent.d \
+	src\rt\typeinfo\ti_cfloat.d \
+	src\rt\typeinfo\ti_char.d \
+	src\rt\typeinfo\ti_creal.d \
+	src\rt\typeinfo\ti_dchar.d \
+	src\rt\typeinfo\ti_delegate.d \
+	src\rt\typeinfo\ti_double.d \
+	src\rt\typeinfo\ti_float.d \
+	src\rt\typeinfo\ti_idouble.d \
+	src\rt\typeinfo\ti_ifloat.d \
+	src\rt\typeinfo\ti_int.d \
+	src\rt\typeinfo\ti_ireal.d \
+	src\rt\typeinfo\ti_long.d \
+	src\rt\typeinfo\ti_n.d \
+	src\rt\typeinfo\ti_ptr.d \
+	src\rt\typeinfo\ti_real.d \
+	src\rt\typeinfo\ti_short.d \
+	src\rt\typeinfo\ti_ubyte.d \
+	src\rt\typeinfo\ti_ucent.d \
+	src\rt\typeinfo\ti_uint.d \
+	src\rt\typeinfo\ti_ulong.d \
+	src\rt\typeinfo\ti_ushort.d \
+	src\rt\typeinfo\ti_void.d \
+	src\rt\typeinfo\ti_wchar.d \
+
+POSIX_SRCS=\
 	src\core\sys\posix\dirent.d \
 	src\core\sys\posix\signal.d \
 	src\core\sys\posix\netdb.d \
@@ -103,12 +177,63 @@ SRCS=\
 	src\core\sys\posix\sys\uio.d \
 	src\core\sys\posix\sys\un.d \
 	src\core\sys\posix\sys\utsname.d \
-	src\core\sys\posix\sys\wait.d \
-	\
+	src\core\sys\posix\sys\wait.d
+
+DARWIN_SRCS=\
+	src\core\sys\darwin\netinet\in_.d
+
+LINUX_SRCS=\
+	src\core\sys\linux\netinet\in_.d \
+	src\core\sys\linux\netinet\tcp.d \
+	src\core\sys\linux\stdio.d \
+	src\core\sys\linux\tipc.d \
+	src\core\sys\linux\sys\inotify.d \
+	src\core\sys\linux\sys\mman.d \
+	src\core\sys\linux\sys\signalfd.d \
+	src\core\sys\linux\sys\socket.d \
+	src\core\sys\linux\sys\sysinfo.d \
+	src\core\sys\linux\sys\time.d \
+	src\core\sys\linux\sys\xattr.d \
+	src\etc\linux\memoryerror.d
+
+FREEBSD_SRCS=\
+	src\core\sys\freebsd\dlfcn.d \
+	src\core\sys\freebsd\execinfo.d \
+	src\core\sys\freebsd\netinet\in_.d \
+	src\core\sys\freebsd\sys\_bitset.d \
+	src\core\sys\freebsd\sys\_cpuset.d \
+	src\core\sys\freebsd\sys\cdefs.d \
+	src\core\sys\freebsd\sys\elf_common.d \
+	src\core\sys\freebsd\sys\elf.d \
+	src\core\sys\freebsd\sys\elf32.d \
+	src\core\sys\freebsd\sys\elf64.d \
+	src\core\sys\freebsd\sys\event.d \
+	src\core\sys\freebsd\sys\link_elf.d \
+	src\core\sys\freebsd\sys\mman.d \
+	src\core\sys\freebsd\time.d
+
+DRAGONFLYBSD_SRCS=\
+	src\core\sys\dragonflybsd\dlfcn.d \
+	src\core\sys\dragonflybsd\execinfo.d \
+	src\core\sys\dragonflybsd\netinet\in_.d \
+	src\core\sys\dragonflybsd\sys\_bitset.d \
+	src\core\sys\dragonflybsd\sys\_cpuset.d \
+	src\core\sys\dragonflybsd\sys\cdefs.d \
+	src\core\sys\dragonflybsd\sys\elf_common.d \
+	src\core\sys\dragonflybsd\sys\elf.d \
+	src\core\sys\dragonflybsd\sys\elf32.d \
+	src\core\sys\dragonflybsd\sys\elf64.d \
+	src\core\sys\dragonflybsd\sys\event.d \
+	src\core\sys\dragonflybsd\sys\link_elf.d \
+	src\core\sys\dragonflybsd\sys\mman.d \
+	src\core\sys\dragonflybsd\time.d
+
+SOLARIS_SRCS=\
 	src\core\sys\solaris\sys\priocntl.d \
 	src\core\sys\solaris\sys\types.d \
-	src\core\sys\solaris\sys\procset.d \
-	\
+	src\core\sys\solaris\sys\procset.d
+
+WINDOWS_SRCS=\
 	src\core\sys\windows\accctrl.d \
 	src\core\sys\windows\aclapi.d \
 	src\core\sys\windows\aclui.d \
@@ -273,108 +398,45 @@ SRCS=\
 	src\core\sys\windows\winuser.d \
 	src\core\sys\windows\winver.d \
 	src\core\sys\windows\wtsapi32.d \
-	src\core\sys\windows\wtypes.d \
-	\
-	src\gc\bits.d \
-	src\gc\config.d \
-	src\gc\gcinterface.d \
-	src\gc\os.d \
-	src\gc\pooltable.d \
-	src\gc\proxy.d \
-	src\gc\impl\conservative\gc.d \
-	src\gc\impl\manual\gc.d \
-	\
-	src\rt\aApply.d \
-	src\rt\aApplyR.d \
-	src\rt\aaA.d \
-	src\rt\adi.d \
-	src\rt\alloca.d \
-	src\rt\arrayassign.d \
-	src\rt\arraycast.d \
-	src\rt\arraycat.d \
-	src\rt\cast_.d \
-	src\rt\cmath2.d \
-	src\rt\config.d \
-	src\rt\cover.d \
-	src\rt\critical_.d \
-	src\rt\deh.d \
-	src\rt\deh_win32.d \
-	src\rt\deh_win64_posix.d \
-	src\rt\dmain2.d \
-	src\rt\dwarfeh.d \
-	src\rt\ehalloc.d \
-	src\rt\invariant.d \
-	src\rt\lifetime.d \
-	src\rt\llmath.d \
-	src\rt\memory.d \
-	src\rt\memset.d \
-	src\rt\minfo.d \
-	src\rt\monitor_.d \
-	src\rt\obj.d \
-	src\rt\profilegc.d \
-	src\rt\qsort.d \
-	src\rt\sections.d \
-	src\rt\sections_android.d \
-	src\rt\sections_elf_shared.d \
-	src\rt\sections_osx_x86.d \
-	src\rt\sections_osx_x86_64.d \
-	src\rt\sections_solaris.d \
-	src\rt\sections_win32.d \
-	src\rt\sections_win64.d \
-	src\rt\tlsgc.d \
-	src\rt\trace.d \
-	src\rt\tracegc.d \
-	src\rt\unwind.d \
-	\
-	src\rt\backtrace\dwarf.d \
-	src\rt\backtrace\elf.d \
-	\
-	src\rt\util\array.d \
-	src\rt\util\hash.d \
-	src\rt\util\random.d \
-	src\rt\util\typeinfo.d \
-	src\rt\util\utf.d \
-	src\rt\util\container\array.d \
-	src\rt\util\container\common.d \
-	src\rt\util\container\hashtab.d \
-	src\rt\util\container\treap.d \
-	\
-	src\rt\typeinfo\ti_Acdouble.d \
-	src\rt\typeinfo\ti_Acfloat.d \
-	src\rt\typeinfo\ti_Acreal.d \
-	src\rt\typeinfo\ti_Adouble.d \
-	src\rt\typeinfo\ti_Afloat.d \
-	src\rt\typeinfo\ti_Ag.d \
-	src\rt\typeinfo\ti_Aint.d \
-	src\rt\typeinfo\ti_Along.d \
-	src\rt\typeinfo\ti_Areal.d \
-	src\rt\typeinfo\ti_Ashort.d \
-	src\rt\typeinfo\ti_byte.d \
-	src\rt\typeinfo\ti_C.d \
-	src\rt\typeinfo\ti_cdouble.d \
-	src\rt\typeinfo\ti_cent.d \
-	src\rt\typeinfo\ti_cfloat.d \
-	src\rt\typeinfo\ti_char.d \
-	src\rt\typeinfo\ti_creal.d \
-	src\rt\typeinfo\ti_dchar.d \
-	src\rt\typeinfo\ti_delegate.d \
-	src\rt\typeinfo\ti_double.d \
-	src\rt\typeinfo\ti_float.d \
-	src\rt\typeinfo\ti_idouble.d \
-	src\rt\typeinfo\ti_ifloat.d \
-	src\rt\typeinfo\ti_int.d \
-	src\rt\typeinfo\ti_ireal.d \
-	src\rt\typeinfo\ti_long.d \
-	src\rt\typeinfo\ti_n.d \
-	src\rt\typeinfo\ti_ptr.d \
-	src\rt\typeinfo\ti_real.d \
-	src\rt\typeinfo\ti_short.d \
-	src\rt\typeinfo\ti_ubyte.d \
-	src\rt\typeinfo\ti_ucent.d \
-	src\rt\typeinfo\ti_uint.d \
-	src\rt\typeinfo\ti_ulong.d \
-	src\rt\typeinfo\ti_ushort.d \
-	src\rt\typeinfo\ti_void.d \
-	src\rt\typeinfo\ti_wchar.d \
-	\
-	src\etc\linux\memoryerror.d
+	src\core\sys\windows\wtypes.d
+
+ifeq (1, $(ENABLE_LEAN_DRUNTIME))
+    ifeq (osx,$(OS))
+      SRCS+=$(subst \,/,$(DARWIN_SRCS))
+      SRCS+=$(subst \,/,$(POSIX_SRCS))
+    endif
+    ifeq (linux,$(OS))
+      SRCS+=$(subst \,/,$(LINUX_SRCS))
+      SRCS+=$(subst \,/,$(POSIX_SRCS))
+    endif
+    ifeq (freebsd,$(OS))
+      SRCS+=$(subst \,/,$(FREEBSD_SRCS))
+      SRCS+=$(subst \,/,$(POSIX_SRCS))
+    endif
+    ifeq (openbsd,$(OS))
+      SRCS+=$(subst \,/,$(POSIX_SRCS))
+    endif
+    ifeq (netbsd,$(OS))
+      SRCS+=$(subst \,/,$(POSIX_SRCS))
+    endif
+    ifeq (dragonflybsd,$(OS))
+      SRCS+=$(subst \,/,$(DRAGONFLYBSD_SRCS))
+      SRCS+=$(subst \,/,$(POSIX_SRCS))
+    endif
+    ifeq (solaris,$(OS))
+      SRCS+=$(subst \,/,$(SOLARIS_SRCS))
+      SRCS+=$(subst \,/,$(POSIX_SRCS))
+    endif
+    ifeq (windows,$(OS))
+      SRCS+=$(subst \,/,$(WINDOWS_SRCS))
+      SRCS+=$(subst \,/,$(POSIX_SRCS))
+    endif
+else
+    SRCS+=$(subst \,/,$(DARWIN_SRCS))
+    SRCS+=$(subst \,/,$(LINUX_SRCS))
+    SRCS+=$(subst \,/,$(FREEBSD_SRCS))
+    #SRCS+=$(subst \,/,$(DRAGONFLYBSD_SRCS))
+    SRCS+=$(subst \,/,$(SOLARIS_SRCS))
+    SRCS+=$(subst \,/,$(WINDOWS_SRCS))
+    SRCS+=$(subst \,/,$(POSIX_SRCS))
+endif
